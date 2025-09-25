@@ -207,7 +207,7 @@ export const updateOrderStatus = async (req, res) => {
                             type: "Point",
                             coordinates: [Number(longitude), Number(latitude)]
                         },
-                        $maxDistance: 5000
+                        $maxDistance: 5000000
 
                     }
                 }
