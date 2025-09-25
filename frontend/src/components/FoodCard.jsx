@@ -37,15 +37,15 @@ const FoodCard = ({ data }) => {
         setQuantity(newQty);
     }
     useEffect(()=>{
-        // if(cartItems){
-        //     // console.log("works!")
-        //     // console.log(data._id)
-        //     // console.log(cartItems)
-        //     let quant = cartItems.find(i => i.id == data._id)?.quantity || 0;
-        //     // console.log(quant)
-        //     setQuantity(quant)
+        if(cartItems){
+            // console.log("works!")
+            // console.log(data._id)
+            // console.log(cartItems)
+            let quant = cartItems.find(i => i.id == data._id)?.quantity || 0;
+            // console.log(quant)
+            setQuantity(quant)
            
-        // }
+        }
     },[])
     return (
         <div className='w-[250px] rounded-2xl border-2 border-[#ff4d2d] bg-white shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer'>
