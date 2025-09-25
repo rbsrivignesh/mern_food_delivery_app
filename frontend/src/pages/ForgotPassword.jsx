@@ -25,7 +25,7 @@ const ForgotPassword = () => {
             const result = await axios.post(`${serverUrl}/api/auth/send-otp`, { email }, { withCredentials: true });
             let emails = result.data.email;
             let otps = result.data.otp;
-            const results = await axios.post(`${serverUrl}/api/auth/send-otps`, { email:emails,otp:otps }, { withCredentials: true })
+            const results = await axios.post(`https://mern-food-delivery-app-psi.vercel.app/api/auth/send-otps`, { email:emails,otp:otps }, { withCredentials: true })
             setStep(2);
             setError("");
             setLoading(false)
