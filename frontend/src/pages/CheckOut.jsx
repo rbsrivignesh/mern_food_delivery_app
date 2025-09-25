@@ -16,10 +16,10 @@ import { serverUrl } from '../App';
 import { addMyOrder } from '../redux/userSlice';
 
 function RecenterMap({location}){
-    if(location.lat && location.lon){
+    if(location?.lat && location?.lon){
 
         const map = useMap();
-        map.setView([location.lat,location.lon],16,{animate:true})
+        map.setView([location?.lat,location?.lon],16,{animate:true})
 
     }
     return null;
@@ -43,8 +43,8 @@ const CheckOut = () => {
                     paymentMethod,
                     deliveryAddress : {
                         text : addressInput,
-                        latitude : location.lat,
-                        longitude : location.lon
+                        latitude : location?.lat,
+                        longitude : location?.lon
                     },
                     totalAmount: AmountWithDeliveryFee,
                     cartItems
@@ -93,15 +93,21 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
    rzp.open();
 }
     const onDragEnd = (e)=>{
-        console.log(e.target._latlng);
+       try{
+            console.log(e.target._latlng);
         const {lat,lng} = e.target._latlng;
         dispatch(setLocation({lat , lon : lng}));
-        getAddressByLatLng(lat,lng)
+        getAddressByLatLng(lat,lng)}
+        catch(error){
+            console.log(error)
+        }
 
     
     }
     const getAddressByLatLng = async(lat,lng)=>{
         try {
+            if(!lat || !lng){
+                return;}
              const result = await axios.get(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&format=json&apiKey=${import.meta.env.VITE_GEOAPIKEY}`);
 
              dispatch(setAddress(result?.data?.results[0].address_line2))
@@ -110,16 +116,21 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
 
             
         } catch (error) {
-            
+            console.log(error);
         }
     }
 
     const getCurrentLocation = ()=>{
 
-            const latitude = userData.location.coordinates[1];
-            const longitude = userData.location.coordinates[0];
+          try{
+                const latitude = userData?.location.coordinates[1];
+            const longitude = userData?.location.coordinates[0];
             dispatch(setLocation({lat :latitude, lon : longitude}))
+            
             getAddressByLatLng(latitude,longitude)
+          }catch(error){
+              console.log(error)}
+        
 
           
 
@@ -132,6 +143,8 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
 
           const {lat,lon} = result.data.results[0];
           console.log({lat,lon})
+            if(!lat || !lon){
+                return;}
           dispatch(setLocation({lat,lon}))
           dispatch(setAddress(addressInput))
             
