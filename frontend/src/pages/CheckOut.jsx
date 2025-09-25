@@ -159,6 +159,8 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
     useEffect(()=>{
         setAddressInput(address);
     },[address])
+
+    
     return (
         <div className='min-h-screen bg-[#fff9f6] flex items-center justify-center p-6'>
             <div className='absolute top-[20px] left-[20px] z-[10] '>
@@ -188,7 +190,8 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   /> 
-  <RecenterMap location={location}/>
+                                {location &&                        
+  <RecenterMap location={location}/> }
   <Marker position={[location?.lat, location?.lon]} draggable eventHandlers={{dragend : onDragEnd}}/>
 
                             </MapContainer>
