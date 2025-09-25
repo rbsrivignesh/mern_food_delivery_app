@@ -24,7 +24,7 @@ import Shop from './pages/Shop'
 import { useEffect } from 'react'
 import { io } from 'socket.io-client'
 import { setSocket } from './redux/userSlice'
-export const serverUrl = "https://mern-food-delivery-app-csde.vercel.app"
+export const serverUrl = "https://mern-food-delivery-app-backend-1xed.onrender.com"
 
 const App = () => {
 
