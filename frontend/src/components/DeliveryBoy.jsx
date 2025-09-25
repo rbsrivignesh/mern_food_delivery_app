@@ -65,10 +65,13 @@ const DeliveryBoy = () => {
 
     try {
       setLoading(true)
-      const result = await axios.post(`https://mern-food-delivery-app-psi.vercel.app/api/order/send-delivery-otp`, { orderId: currentOrder?._id, shopOrderId: currentOrder?.shopOrder._id }, { withCredentials: true });
-
-      console.log(result.data);
-       setLoading(false)
+      const result= await axios.post(`${serverUrl}/api/order/send-delivery-otp`, { orderId: currentOrder?._id, shopOrderId: currentOrder?.shopOrder._id }, { withCredentials: true });
+      let email = result.data.email;
+      let otp = result.data.otp
+      console.log(email);
+      console.log(otp);
+      const results= await axios.post(`${serverUrl}/api/order/send-otp`, { email,otp }, { withCredentials: true });
+      setLoading(false)
       setShowOtpBox(true)
 
 
