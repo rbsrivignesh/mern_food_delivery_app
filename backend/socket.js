@@ -2,8 +2,10 @@ import { truncates } from "bcryptjs";
 import User from "./models/user_model.js"
 
 export const socketHandler = async (io) => {
+    
 
     io.on('connection', (socket) => {
+        console.log(socket.id);
         socket.on('identity',async({userId})=>{
             try {
                 
