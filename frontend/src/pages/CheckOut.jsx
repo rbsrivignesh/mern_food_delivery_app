@@ -14,6 +14,7 @@ import { FaMobileAlt } from "react-icons/fa";
 import { FaRegCreditCard } from "react-icons/fa";
 import { serverUrl } from '../App';
 import { addMyOrder } from '../redux/userSlice';
+import { ClipLoader } from 'react-spinners';
 
 function RecenterMap({location}){
     if(location?.lat && location?.lon){
@@ -162,7 +163,7 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
 
     
     return (
-        { location && 
+     location?.lat && location?.lon ?
         (  <div className='min-h-screen bg-[#fff9f6] flex items-center justify-center p-6'>
             <div className='absolute top-[20px] left-[20px] z-[10] '>
 
@@ -255,8 +256,11 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
 
             </div>
         </div>
-  )
-        }
+  ):(  <div className="flex items-center justify-center h-screen">
+      <ClipLoader size={40} color="#ff4d2d" />
+      <p className="ml-3 text-gray-600">Loading map...</p>
+    </div>)
+        
     
         )
 }
