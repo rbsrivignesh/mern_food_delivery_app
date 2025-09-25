@@ -41,7 +41,13 @@ const App = () => {
   const dispatch= useDispatch();
 
   useEffect(()=>{
-    const socketInstance = io(serverUrl,{withCredentials : true});
+    const socketInstance = io(serverUrl,
+                              {
+
+path: '/socket.io',
+transports: ['websocket'],
+secure: true,
+withCredentials : true});
     dispatch(setSocket(socketInstance));
     socketInstance.on('connect',()=>{
      if(userData){
