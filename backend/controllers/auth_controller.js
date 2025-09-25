@@ -115,8 +115,12 @@ export const signIn = async (req, res) => {
 
 export const signOut = async (req, res) => {
     try {
-       let a= res.clearCookie("token");
-        console.log(a);
+      res.clearCookie("token", {
+  secure: true,
+  sameSite: "none",
+  httpOnly: true,
+  path: "/"   // include this for safety
+});
 
         
         return res.status(200).json({ message: "Sign out done successfully" });
