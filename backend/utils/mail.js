@@ -24,11 +24,14 @@ export const sendOtpMail = async (to, otp) => {
     })
 
 }
-export const sendDeliveryOtpMail = async (user, otp) => {
+export const sendDeliveryOtpMail = async (email, otp) => {
+    console.log("sendotpworks")
+    console.log(email)
+    console.log(otp)
 
     await transporter.sendMail({
         from: process.env.EMAIL,
-        to : user.email,
+        to : email,
         subject: "Your OTP for delivery",
         html: `<p> your otp for delivery is <b>${otp}</b>. It expires in 5 minutes . </p>`
 
