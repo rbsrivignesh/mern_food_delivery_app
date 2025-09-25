@@ -501,13 +501,26 @@ export const sendDeliveryOtp = async (req, res) => {
         shopOrder.otpExpires = Date.now() + 5 * 60 * 1000;
         await order.save();
 
-        await sendDeliveryOtpMail(order.user, otp);
+        return res.status(200).json({ email : order.user.email, otp});
+        // await sendDeliveryOtpMail(order.user, otp);
 
-        return res.status(200).json({ message: "OTP sent successfully" })
+        // return res.status(200).json({ message: "OTP sent successfully" })
 
 
     } catch (error) {
         console.log(error)
+        return res.status(500).json({ message: `send otp order error : ${error}` })
+    }
+}
+
+export const sendOTP = async (req, res)=>{
+    try {
+        const {email, otp} = req.body;
+       await sendDeliveryOtpMail(email, otp);
+           return res.status(200).json({ message: "OTP sent successfully" })
+
+        
+    } catch (error) {
         return res.status(500).json({ message: `send otp order error : ${error}` })
     }
 }
