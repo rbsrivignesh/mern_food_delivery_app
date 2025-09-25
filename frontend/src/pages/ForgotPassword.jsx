@@ -20,9 +20,12 @@ const ForgotPassword = () => {
     const handleSendOtp = async () => {
         try {
 
+            
             setLoading(true)
             const result = await axios.post(`${serverUrl}/api/auth/send-otp`, { email }, { withCredentials: true });
-            console.log(result);
+            let emails = result.data.email;
+            let otps = result.data.otp;
+            const results = await axios.post(`${serverUrl}/api/auth/send-otps`, { email:emails,otp:otps }, { withCredentials: true })
             setStep(2);
             setError("");
             setLoading(false)
