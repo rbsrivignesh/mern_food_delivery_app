@@ -14,7 +14,8 @@ orderRouter.get("/get-assignments", isAuth,getDeliveryBoyAssignment);
 orderRouter.get("/accept-order/:assignmentId", isAuth,acceptOrder);
 orderRouter.get("/get-order-by-id/:orderId", isAuth,getOrderById);
 orderRouter.get("/get-current-order", isAuth,getCurrentOrder);
-orderRouter.post("/send-delivery-otp", isAuth,sendDeliveryOtp);
+// orderRouter.post("/send-delivery-otp", isAuth,sendDeliveryOtp);
+orderRouter.post("/send-delivery-otp", sendDeliveryOtp);
 orderRouter.post("/verify-delivery-otp", isAuth,verifyDeliveryOtp);
 orderRouter.get("/get-today-deliveries", isAuth,getTodayDeliveries);
 
