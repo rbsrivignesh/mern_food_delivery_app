@@ -41,12 +41,8 @@ const App = () => {
   const dispatch= useDispatch();
 
   useEffect(()=>{
-    const socketInstance = io(serverUrl,
+    const socketInstance = io("https://mern-food-delivery-app-backend-1xed.onrender.com",
                               {
-
-path: '/socket.io',
-transports: ['websocket'],
-secure: true,
 withCredentials : true});
     dispatch(setSocket(socketInstance));
     socketInstance.on('connect',()=>{
