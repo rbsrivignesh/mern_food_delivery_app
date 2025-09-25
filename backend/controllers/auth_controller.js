@@ -150,7 +150,17 @@ export const sendOtp = async (req, res) => {
         user.isOtpVerified = false;
 
         await user.save();
-        await sendOtpMail(email, otp);
+        return res.status(200).json({email : user.email,otp});
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ message: `send otp error ${error}` });
+
+    }
+}
+export const sendOtpMails =async(req,res)=>{
+    try {
+        const {email,otp} = req.body;
+      await sendOtpMail(email, otp);
 
         return res.status(200).json({ message: "OTP Sent successfully" });
     } catch (error) {
