@@ -41,9 +41,7 @@ const App = () => {
   const dispatch= useDispatch();
 
   useEffect(()=>{
-    const socketInstance = io("https://mern-food-delivery-app-backend-1xed.onrender.com",
-                              {
-withCredentials : true});
+    const socketInstance = io("https://mern-food-delivery-app-backend-1xed.onrender.com",{withCredentials : true});
     dispatch(setSocket(socketInstance));
     socketInstance.on('connect',()=>{
      if(userData){
