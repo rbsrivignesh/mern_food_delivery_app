@@ -162,7 +162,8 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
 
     
     return (
-        <div className='min-h-screen bg-[#fff9f6] flex items-center justify-center p-6'>
+        { location && 
+        (  <div className='min-h-screen bg-[#fff9f6] flex items-center justify-center p-6'>
             <div className='absolute top-[20px] left-[20px] z-[10] '>
 
                 <FaArrowLeft onClick={() => navigate("/")} size={35} className='text-[#ff4d2d]' />
@@ -254,7 +255,10 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
 
             </div>
         </div>
-    )
+  )
+        }
+    
+        )
 }
 
 export default CheckOut
