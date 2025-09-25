@@ -203,7 +203,7 @@ setLoading(false)
                       <p className='text-sm text-gray-500'><span className='font-semibold'>Delivery Adderss :</span>{a?.deliveryAddress?.text}</p>
                       <p className='text-sm text-gray-500'>{a.items.length} items | {a.subTotal}</p>
                     </div>
-                    <button onClick={() => acceptOrder(a.assignmentId)} className='bg-orange-500 text-white px-4 py-1 rounded-lg text-sm hover:bg-orange-600'>Accept</button>
+                    <button onClick={() => acceptOrder(a.assignmentId)} className='cursor-pointer bg-orange-500 text-white px-4 py-1 rounded-lg text-sm hover:bg-orange-600'>Accept</button>
 
                   </div>
                 ))
@@ -233,7 +233,7 @@ setLoading(false)
               }
             }} />
             {!showOtpBox ? (
-              <button onClick={sendOtp} className='mt-4 w-full bg-green-500 text-white font-semibold py-2 px-4 rounded-xl shadow-md hover:bg-green-600 active:scale-95 transition-all duration-200' disabled={loading}>
+              <button onClick={sendOtp} className='mt-4 w-full bg-green-500 text-white font-semibold py-2 px-4 rounded-xl shadow-md hover:bg-green-600 active:scale-95 transition-all duration-200 cursor-pointer' disabled={loading}>
               {loading ?<ClipLoader size={20} color='white'/>:" Mark As Delivered" } 
               </button>
             ) :
@@ -243,7 +243,7 @@ setLoading(false)
                   <input onChange={(e) => setOtp(e.target.value)} type="text" value={otp} className='w-full border px-3 py-2 rounded-lg mb-3 focus:outline-none focus:ring-2 focus: ring-orange-400' placeholder='Enter Otp' />
                   {message && <p className='text-center text-green-400'>{message}</p>}
                   
-                  <button onClick={verifyOtp} className='w-full bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all'>Submit Otp</button>
+                  <button onClick={verifyOtp} className='cursor-pointer w-full bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all'>Submit Otp</button>
                 </div>
 
               )}

@@ -234,7 +234,7 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
                     </div>
                 </section>
 
-                <button onClick={handlePlaceOrder} className='w-full bg-[#ff4d2d] hover: bg-[#e64526] text-white py-3 rounded-xl font-semibold'>{paymentMethod === "COD" ?"Place Order" : "Pay & Place Order"}</button>
+                <button onClick={handlePlaceOrder} className='cursor-pointer w-full bg-[#ff4d2d] hover: bg-[#e64526] text-white py-3 rounded-xl font-semibold'>{paymentMethod === "COD" ?"Place Order" : "Pay & Place Order"}</button>
 
             </div>
         </div>
