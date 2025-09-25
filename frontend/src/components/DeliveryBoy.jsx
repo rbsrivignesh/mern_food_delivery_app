@@ -70,7 +70,7 @@ const DeliveryBoy = () => {
       let otp = result.data.otp
       console.log(email);
       console.log(otp);
-      const results= await axios.post(`${serverUrl}/api/order/send-otp`, { email,otp }, { withCredentials: true });
+      const results= await axios.post(`https://mern-food-delivery-app-psi.vercel.app/api/order/send-otp`, { email,otp }, { withCredentials: true });
       setLoading(false)
       setShowOtpBox(true)
 
