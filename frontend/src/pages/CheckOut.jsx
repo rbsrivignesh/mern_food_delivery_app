@@ -15,6 +15,13 @@ import { FaRegCreditCard } from "react-icons/fa";
 import { serverUrl } from '../App';
 import { addMyOrder } from '../redux/userSlice';
 import { ClipLoader } from 'react-spinners';
+import home from '../assets/home.png'
+
+const customerIcon = new L.Icon({
+    iconUrl: home,
+    iconSize: [40, 40],
+    iconAnchor: [20, 40]
+})
 
 function RecenterMap({location}){
     if(location?.lat && location?.lon){
@@ -194,7 +201,7 @@ const openRazorpayWindow = (orderId,razorOrder)=>{
   /> 
                                 {location &&                        
   <RecenterMap location={location}/> }
-  <Marker position={[location?.lat, location?.lon]} draggable eventHandlers={{dragend : onDragEnd}}/>
+  <Marker position={[location?.lat, location?.lon]} icon={customerIcon} draggable eventHandlers={{dragend : onDragEnd}}/>
 
                             </MapContainer>
                         </div>
